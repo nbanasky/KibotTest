@@ -1,2 +1,30 @@
-- name: KiBot GitHub action
-  uses: INTI-CMNB/KiBot@v1.8.2
+          - name: KiBot GitHub action
+  # You may pin to the exact commit or the version.
+  # uses: INTI-CMNB/KiBot@8a00b90949bad65e36658d4551820edee9c0f5d6
+  uses: INTI-CMNB/KiBot@v2_k7
+  with:
+    # The config file to use
+    config: # optional, default is __SCAN__
+    # The output directory [default: .]
+    dir: # optional, default is .
+    # The PCB .kicad-pcb board file [default: first *.kicad_pcb found]
+    board: # optional, default is __SCAN__
+    # The schematic file (.sch) [default: first *.*sch found]
+    schema: # optional, default is __SCAN__
+    # Scans for projects and generates configs and outputs, use YES [default: NO]
+    quickstart: # optional, default is NO
+    # Skip preflights, comma separated or "all" [default: no skip]
+    skip: # optional, default is __NONE__
+    # List of targets to generate separated by spaces. To only run preflights use __NONE__  [default: generate all]
+    targets: # optional, default is __ALL__
+    # Global variant to use [default: no variants]
+    variant: # optional, default is __NONE__
+    # Install the 3D models, use YES [default: NO]
+    install3D: # optional, default is NO
+    # Verbosity level [default: 0]
+    verbose: # optional, default is 0
+    # Additional arguments to pass to KiBot
+    additional_args: # optional, default is 
+    # Cache the 3D models, use YES [default: NO]
+    cache3D: # optional, default is NO
+          
