@@ -1,3 +1,2 @@
-              
 - name: KiBot GitHub action
   uses: INTI-CMNB/KiBot@v1.8.2
