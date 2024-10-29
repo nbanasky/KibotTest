@@ -1,0 +1,15 @@
+kibot:
+  version: 1
+
+preflight:
+  run_erc: true
+  run_drc: true
+  check_zone_fills: true
+
+outputs:
+  - name: 'Print Schema as PDF'
+    comment: "Print schematic (PDF)"
+    type: pdf_sch_print
+    dir: schematics
+    options:
+      output: '%p-Schematic.%x'
