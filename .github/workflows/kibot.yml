@@ -1,10 +1,20 @@
-name: Run KiBot
+name: KiBot_GitHub_Actions  # This is a name. It can be anything you want.
+on: [push, pull_request]    # GitHub triggers for running this.  In this example it will run when anything is pushed to GitHub or a pull request is created.
+jobs:   # List of jobs to be run.  Can be used to better organize steps.
+  KiBot-Generation:  # This is a name. It can be anything you want.
+    runs-on: ubuntu-latest  # Don't change
+    container: ghcr.io/inti-cmnb/kicad7_auto_full:latest  # Don't Change, except if needing older version of KiCad.
 
-on: [push, pull_request]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
     steps:
-      - name: KiBot GitHub action
-        uses: INTI-CMNB/KiBot@v1.8.2
+    - name: Checkout repo
+      uses: actions/checkout@v3  # GitHub built-in repo checkout step.
+
+    # Start of the KiBot steps
+    - name: Run KiBot
+      run: |
+        kibot -e "project_name.kicad_sch"
+
+    # Post KiBot steps (Optional).
+    - name: Optionally do other things
+      run: |
+        echo "Run bash commands to do things like committing the files or adding them as artifacts"
