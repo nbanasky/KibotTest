@@ -33,7 +33,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: | 
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_erc -v -i
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s erc -v -i
   DRC:
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto:latest
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: | 
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_drc -v -i
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s drc -v -i
 # documentation
   docs:
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: | 
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_erc,run_drc -v \
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s erc,drc -v \
             ibom.html octopart.csv schematic.pdf schematic.svg board_top.pdf board_bottom.pdf
       - uses: actions/upload-artifact@v3.1.1
         if: ${{success()}}
@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: |
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_erc,run_drc -v \
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s erc,drc -v \
             gerbers.gbr drills.gbr drills.drl pickandplace.csv bom.csv
       - uses: actions/upload-artifact@v3.1.1
         if: ${{success()}}
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: | 
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_erc,run_drc -v \
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s erc,drc -v \
             model.step openboardview.brd autocad.dxf
       - uses: actions/upload-artifact@v3.1.1
         if: ${{success()}}
@@ -111,7 +111,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: run kibot
         run: | 
-          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s run_erc,run_drc -v \
+          kibot -c kibot.yml -e ${{env.schema}} -b ${{env.board}} -d ${{env.dir}} -s erc,drc -v \
             board_black_top.svg board_black_bottom.svg
       - uses: actions/upload-artifact@v3.1.1
         if: ${{success()}}
